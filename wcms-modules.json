@@ -1,18 +1,20 @@
 {
     "version": 1,
     "customModules": {
-        "wonder-aggregator": {
-            "id": "wonder-aggregator",
-            "name": "Wonder Aggregator",
-            "repo": "https://github.com/Monarkie/wonder-aggregator",
-            "zip": "https://github.com/Monarkie/wonder-aggregator/archive/main.zip",
-            "summary": "RSS Feed Aggregator",
-            "version": "1.0.0",
-            "moduleType": "plugin",
-            "price": "0",
-            "developer": "Monarkie",
-            "website": "https://github.com/Monarkie",
-            "license": "GPLv3"
+        "plugins": {
+            "wonder-aggregator": {
+                "id": "wonder-aggregator",
+                "name": "Wonder Aggregator",
+                "repo": "https://github.com/Monarkie/wonder-aggregator/tree/main/wonder-aggregator",
+                "zip": "https://github.com/Monarkie/wonder-aggregator/archive/main.zip",
+                "summary": "RSS Feed Aggregator",
+                "version": "1.0.0",
+                "moduleType": "plugin",
+                "price": "0",
+                "developer": "Monarkie",
+                "website": "https://github.com/Monarkie",
+                "license": "GPLv3"
+            }
         }
     }
 }
