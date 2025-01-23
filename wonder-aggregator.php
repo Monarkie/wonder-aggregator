@@ -50,9 +50,12 @@ class WonderAggregator {
     }
     
     private function getFeeds(): array {
-        $feeds = $this->Wcms->get('config', 'rssFeeds');
-        return $feeds ? explode("\n", $feeds) : [];
+    $feeds = $this->Wcms->get('config', 'rssFeeds');
+    if (is_object($feeds)) {
+        return [];
     }
+    return $feeds ? explode("\n", $feeds) : [];
+}
     
     private function fetchAndParseFeed(string $url): array {
         $content = @file_get_contents($url);
