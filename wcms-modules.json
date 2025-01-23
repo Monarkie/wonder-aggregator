@@ -3,11 +3,11 @@
     "plugins": {
         "wonder-aggregator": {
             "name": "Wonder Aggregator",
-            "repo": "https://github.com/Monarkie/wonder-aggregator/tree/master", 
-            "zip": "https://github.com/Monarkie/wonder-aggregator/archive/master.zip",
+            "repo": "https://github.com/Monarkie/wonder-aggregator/tree/main/wonder-aggregator",
+            "zip": "https://github.com/Monarkie/wonder-aggregator/archive/main.zip",
             "summary": "Creates a chronological timeline of subscribed feeds.",
             "version": "1.0.0",
-            "image": "https://raw.githubusercontent.com/Monarkie/wonder-aggregator/master/preview.jpg",
+            "image": "https://raw.githubusercontent.com/Monarkie/wonder-aggregator/main/wonder-aggregator/preview.jpg",
             "price": "0",
             "developer": "Monarkie",
             "website": "https://github.com/Monarkie",
