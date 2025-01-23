@@ -1,12 +1,10 @@
 {
-    "version": 1,
-    "customModules": {
+   "customModules": {
         "wonder-aggregator": {
             "name": "Wonder Aggregator",
             "repo": "https://github.com/Monarkie/wonder-aggregator/tree/main/wonder-aggregator",
             "zip": "https://github.com/Monarkie/wonder-aggregator/archive/refs/heads/main.zip",
             "summary": "Creates a chronological timeline of subscribed feeds.",
-            "version": "2.0.0",
             "image": "https://raw.githubusercontent.com/Monarkie/wonder-aggregator/main/wonder-aggregator/preview.jpg",
             "price": "0",
             "developer": "Monarkie",
