@@ -9,23 +9,34 @@ class WonderAggregator {
     
     public function __construct($Wcms) {
         $this->Wcms = $Wcms;
+        
+        if (isset($_POST['rssFeeds'])) {
+            $this->Wcms->set('config', 'rssFeeds', $_POST['rssFeeds']);
+        }
+        
         $this->feeds = $this->getFeeds();
         
         $this->Wcms->addListener('css', [$this, 'css']);
         $this->Wcms->addListener('js', [$this, 'js']);
         $this->Wcms->addListener('settings', [$this, 'settings']);
         $this->Wcms->addListener('menu', [$this, 'menu']);
-        $this->Wcms->addListener('page', [$this, 'display']);
+        $this->Wcms->addListener('page', [$this, 'page']);
     }
     
     public function menu(array $items): array {
         $items[] = [
             'slug' => 'timeline',
             'name' => 'Timeline',
-            'slug' => 'timeline',
-            'content' => $this->display()
+            'content' => ''
         ];
         return $items;
+    }
+    
+    public function page($content): string {
+        if ($this->Wcms->currentPage == 'timeline') {
+            return $this->display();
+        }
+        return $content;
     }
     
     public function settings(): string {
@@ -64,12 +75,21 @@ class WonderAggregator {
     }
     
     public function display(): string {
+        if (empty($this->feeds)) {
+            return '<div class="alert alert-warning">No RSS feeds configured. Please add feeds in the admin settings.</div>';
+        }
+
         $allItems = [];
         foreach ($this->feeds as $feed) {
+            if (empty(trim($feed))) continue;
             $items = $this->fetchAndParseFeed(trim($feed));
             $allItems = array_merge($allItems, $items);
         }
         
+        if (empty($allItems)) {
+            return '<div class="alert alert-warning">No items found in the configured feeds.</div>';
+        }
+
         usort($allItems, function($a, $b) {
             return $b['date'] - $a['date'];
         });
@@ -113,7 +133,8 @@ class WonderAggregator {
             const viewButtons = document.querySelectorAll(".view-toggle");
             const feedsContainer = document.querySelector(".rss-feeds");
             
-            // Set initial active state
+            if (!feedsContainer) return;
+            
             const currentView = document.cookie.replace(/(?:(?:^|.*;\s*)rss_view_mode\s*\=\s*([^;]*).*$)|^.*$/, "$1") || "list";
             viewButtons.forEach(btn => {
                 if(btn.dataset.mode === currentView) btn.classList.add("active");
@@ -122,15 +143,9 @@ class WonderAggregator {
             viewButtons.forEach(button => {
                 button.addEventListener("click", function() {
                     const mode = this.dataset.mode;
-                    
-                    // Update buttons
                     viewButtons.forEach(btn => btn.classList.remove("active"));
                     this.classList.add("active");
-                    
-                    // Update view
                     feedsContainer.className = `rss-feeds ${mode}-view`;
-                    
-                    // Save preference
                     document.cookie = `rss_view_mode=${mode};path=/;max-age=31536000`;
                 });
             });
