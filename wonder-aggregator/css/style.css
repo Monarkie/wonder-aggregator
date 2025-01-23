@@ -1,0 +1,52 @@
+.view-controls {
+    margin-bottom: 20px;
+}
+
+.view-toggle {
+    margin-right: 10px;
+    padding: 5px 10px;
+}
+
+.view-toggle.active {
+    background: #007bff;
+    color: white;
+}
+
+.rss-feeds {
+    margin: 20px 0;
+}
+
+.rss-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #eee;
+}
+
+.rss-item h3 {
+    margin: 0 0 10px 0;
+}
+
+.rss-item .meta {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.rss-item .description {
+    line-height: 1.5;
+}
+
+.list-view .rss-item {
+    margin-bottom: 20px;
+}
+
+.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.grid-view .rss-item {
+    margin: 0;
+    height: 100%;
+}
