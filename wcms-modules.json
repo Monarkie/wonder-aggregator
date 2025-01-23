@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "plugins": {
+    "customModules": {
         "wonder-aggregator": {
             "name": "Wonder Aggregator",
             "repo": "https://github.com/Monarkie/wonder-aggregator/tree/main/wonder-aggregator",
